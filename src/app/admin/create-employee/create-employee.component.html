@@ -1,0 +1,109 @@
+
+<div mat-dialog-title>
+  <h3> Let's create an Employee </h3>
+</div>
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="p-5">
+
+  <div mat-dialog-content class="content">
+    <div class="row">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Id</mat-label>
+        <input type="number" matInput placeholder="Enter your number" formControlName="Id">
+        <mat-error *ngIf="employeeForm?.get('Id')?.hasError('required')">
+          Id is required
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field appearance="outline">
+        <mat-label>Name </mat-label>
+        <input type="text" matInput placeholder="Enter your Name" formControlName="Name">
+        <mat-error *ngIf="employeeForm?.get('Name')?.hasError('required')">
+          Name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email </mat-label>
+        <input type="email" matInput placeholder="Enter your email" formControlName="Email">
+        <!-- <div class="error-message"
+        *ngIf="employeeForm.get('Email')?.hasError('required') && employeeForm.get('Email')?.touched">
+        EMAIL is required
+      </div> -->
+      <mat-error *ngIf="employeeForm?.get('Email')?.hasError('required')">
+        Email is required
+      </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Number </mat-label>
+        <input type="number" matInput placeholder="Enter your number" formControlName="Mobile">
+      <mat-error *ngIf="employeeForm?.get('Mobile')?.hasError('required')">
+        Mobile Number is required
+      </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Employee Activate Date </mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="EmployeeActivateDate">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="employeeForm?.get('EmployeeActivateDate')?.hasError('required')">
+          Employee Activate Date is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Employee DOB</mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="EmployeeDOB">
+        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+        <mat-error *ngIf="employeeForm?.get('EmployeeDOB')?.hasError('required')">
+          Employee Dob is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Task ID </mat-label>
+        <input type="number" matInput placeholder="Enter your number" formControlName="TaskId">
+        <mat-error *ngIf="employeeForm?.get('TaskId')?.hasError('required')">
+          TaskId is required
+        </mat-error>
+
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label> Task Start Date</mat-label>
+        <input matInput [matDatepicker]="picker2" formControlName="TaskStartDate">
+        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+        <mat-error *ngIf="employeeForm?.get('TaskId')?.hasError('required')">
+          TaskId is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label> Task End Date</mat-label>
+        <input matInput [matDatepicker]="picker3" formControlName="TaskEndDate">
+        <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
+        <mat-datepicker #picker3></mat-datepicker>
+        <mat-error *ngIf="employeeForm?.get('TaskEndDate')?.hasError('required')">
+          TaskEnd Date is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+  </div>
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button type="button" [mat-dialog-close]="false"> Cancel </button>
+    <button mat-raised-button color="primary" type="submit">{{ data ? 'update' : 'Save'}}</button>
+  </div>
+
+</form>

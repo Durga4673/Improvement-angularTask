@@ -1,0 +1,149 @@
+
+.form-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 720px;
+  width: 100%;
+  border: 1px solid #717171;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style your form as needed */
+.form-popup .form-box {
+  display: flex;
+}
+
+.form-box .form-details {
+  color: #000; /* Change text color as needed */
+}
+
+.form-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form .input-field {
+  margin: 10px 0;
+  position: relative;
+}
+
+input[type="email"], input[type="password"] {
+  width: 100%;
+  height: 40px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+input[type="email"]:focus, input[type="password"]:focus {
+  border-color: #007bff; /* Change the focus color as needed */
+}
+
+input[type="email"]::placeholder, input[type="password"]::placeholder {
+  color: #999; /* Change the placeholder text color as needed */
+}
+
+.form-box a {
+  color: #00bcd4;
+  text-decoration: none;
+}
+
+form button {
+  width: 100%;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 12px;
+  margin: 25px 0;
+  cursor: pointer;
+  background-color: #00bcd4;
+  color: #fff;
+  border-radius: 3px;
+  transition: background-color 0.2s;
+}
+
+form button:disabled{
+  background-color: #ccc;
+  cursor: not-allowed;
+
+}
+
+form button:hover {
+  background-color: #0097a7;
+}
+
+.login .form-details {
+  background: url("../../assets/images/login-img.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.form-box .form-details {
+  color: #fff;
+  max-width: 330px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  padding: 0 20px;
+}
+.form-box .form-content {
+  width: 100%;
+  padding: 34px;
+}
+form .input-field input {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  font-size: 0.95rem;
+  border-radius: 3px;
+  border: 1px solid #717171;
+  padding: 0px 15px;
+}
+form .input-field {
+  height: 50px;
+  width: 100%;
+  margin-top: 20px;
+  position: relative;
+}
+.form-box a {
+  color: #00bcd4;
+  text-decoration: none;
+}
+.form-box :where(.forgot-pass, .policy-text) {
+  display: inline-flex;
+  margin-top: 14px;
+  font-size: 0.95rem;
+}
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+}
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../../assets/images/hero-bg.jpg');
+  background-size: cover;
+  filter: blur(2px);
+  z-index: -1; /* Place it behind the form */
+}
+
+.input-field .mat-form-field{
+  width: 100%;
+}

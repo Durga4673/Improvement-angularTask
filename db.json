@@ -1,0 +1,45 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "employeesData": [
+    {
+      "Id": 12,
+      "Name": "prasad",
+      "Email": "prasad@gmail.com",
+      "Mobile": 8897877999,
+      "EmployeeActivateDate": "2023-10-31T18:30:00.000Z",
+      "EmployeeDOB": "2023-11-01T18:30:00.000Z",
+      "TaskId": 25,
+      "TaskStartDate": "2023-11-16T18:30:00.000Z",
+      "TaskEndDate": "2023-11-16T18:30:00.000Z",
+      "id": 2
+    },
+    {
+      "Id": 1,
+      "Name": "korada maharshi",
+      "Email": "koradamaha@gmail.com",
+      "Mobile": 8988989722,
+      "EmployeeActivateDate": "2023-11-07T18:30:00.000Z",
+      "EmployeeDOB": "2023-11-12T18:30:00.000Z",
+      "TaskId": 12344,
+      "TaskStartDate": "2023-11-22T18:30:00.000Z",
+      "TaskEndDate": "2023-11-20T18:30:00.000Z",
+      "id": 3
+    }
+  ]
+}

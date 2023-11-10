@@ -1,0 +1,66 @@
+<!-- <div class="form-popup">
+  <span class=" close-btn material-symbols-outlined">close</span>
+  <div class="form-box login">
+    <div class="form-details">
+        <h2>Welcome Back</h2>
+        <p> please log in using your personal information to stay connected us .</p>
+    </div>
+    <div class="form-content">
+        <h2>LOGIN</h2>
+        <form action="#">
+            <div class="input-field">
+              <input type="email" required >
+              <label>Email</label>
+            </div>
+            <div class="input-field">
+                <input type="password" required="">
+                <label>Password</label>
+            </div>
+            <a href="#" class="forgot-pass">Forgot password?</a>
+            <button type="submit">Log In</button>
+        </form>
+        <div class="bottom-link">
+            Don't have an account ?
+            <a href="#" id="signup-link">Signup</a>
+        </div>
+    </div>
+</div>
+</div> -->
+
+<div class="login-container">
+  <div class="background-image"></div>
+  <div class="form-popup" id="loginForm">
+    <div class="form-box login">
+      <div class="form-details">
+        <h2>Welcome Back</h2>
+        <p>Please log in using your personal information to stay connected with us.</p>
+      </div>
+      <div class="form-content">
+        <h2>LOGIN</h2>
+        <form [formGroup]="form">
+          <div class="input-field">
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <mat-label>User Name </mat-label>
+              <input type="text" matInput placeholder="Enter your username" required formControlName="username">
+            </mat-form-field>
+          </div>
+          <div class="input-field">
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <mat-label>Password </mat-label>
+              <input type="password" matInput placeholder="Enter your password" required  formControlName="password" >
+            </mat-form-field>
+          </div>
+          <a href="#" class="forgot-pass">Forgot password?</a>
+          <button type="submit" (click)="login()" [disabled]="!form.valid">Log In</button>
+
+          <!-- {{form.value | json}} -->
+        </form>
+        <div class="bottom-link">
+          Don't have an account?
+          <a href="javascript:void(0)">Signup</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,24 @@
+.row{
+  display: flex;
+  gap: 10px;
+}
+mat-form-field{
+  width: 100%;
+}
+
+.content{
+  padding-top: 10px;
+}
+
+.action{
+  padding: 0px 25px 20px;
+
+}
+.action button{
+  flex: 1;
+}
+mat-error {
+  color: red;
+  font-size: 12px;
+  /* margin-top: 4px; */
+}
