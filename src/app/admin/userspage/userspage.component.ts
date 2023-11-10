@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { AuthService } from 'src/app/auth.service';
 import { CreateEmployeeComponent } from '../create-employee/create-employee.component';
@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 import { ToastService } from 'src/app/toast.service';
 import { EmployeeDataService } from 'src/app/services/employee-data.service';
+import { MatInput } from '@angular/material/input';
 
 
 export interface PeriodicElement {
@@ -27,7 +28,7 @@ export interface PeriodicElement {
 })
 export class UserspageComponent {
 
-
+  @ViewChild('input') filterInput!: MatInput;
   // details:any[]=[];
   employees:any[]=[];
   // filteredDetails: any[] = [];
@@ -98,7 +99,8 @@ export class UserspageComponent {
 
 
   applyFilter(event: Event){
-
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    this.dataSourceList.filter = filterValue;
   }
 
 
