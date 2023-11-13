@@ -8,13 +8,15 @@ export class AuthService {
   users: any = [
     {
       id: 1,
-      name: 'Durga',
+      role: 'admin',
+      name: 'Admin',
       username: 'durga',
       password: 'abc123',
     },
     {
       id: 2,
-      name: 'Prasad',
+      role: 'public',
+      name: 'Public',
       username: 'prasad',
       password: 'abc123',
     },
@@ -35,7 +37,8 @@ export class AuthService {
 
   login(username: string, password: string) {
     let user = this.users.find(
-      (u: { username: string; password: string; }) => u.username === username && u.password === password
+      (u: { username: string; password: string; role: string  }) =>
+        u.username === username && u.password === password
     );
     if (user) {
       this.session = user;

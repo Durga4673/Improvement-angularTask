@@ -26,19 +26,24 @@ export class LoginComponent {
   ){}
 
   login() {
-    // Implement login logic here using this.loginData
-    let user = this.authService.login(
-      this.form.value.username,
-      this.form.value.password
+      // Implement login logic here using this.loginData
+        let user = this.authService.login(
+        this.form.value.username,
+        this.form.value.password
     );
     if (!user) {
-      // alert('Invalid logins')
       this._toastService.openSnackBar('Invalid logins', 'done');
     } else {
-      this.router.navigateByUrl('/admin');
-      this._toastService.openSnackBar(' loggedIn Succesfully', 'done');
+      if (user.role === 'admin') {
 
+        this.router.navigateByUrl('/admin');
+
+      } else if (user.role === 'public') {
+
+        this.router.navigateByUrl('/public');
+      }
+      this._toastService.openSnackBar('Logged in Successfully', 'done');
     }
-  }
+}
 
 }

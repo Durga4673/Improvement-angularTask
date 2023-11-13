@@ -6,7 +6,7 @@
       <span class="example-spacer"></span>
       <button id="mat-iconContent" class="example-icon" [matMenuTriggerFor]="userMenu">
         <mat-icon>account_circle</mat-icon>
-        <!-- <span *ngIf="loggedIn" class="">{{ loggedInUser.name }}</span> -->
+        <span *ngIf="loggedIn" class="">{{ loggedInUser.name }}</span>
       </button>
       <mat-menu #userMenu="matMenu">
         <button mat-menu-item (click)="logout()" >Sign Out</button>

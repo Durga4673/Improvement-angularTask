@@ -34,7 +34,8 @@ export class UserspageComponent {
   // filteredDetails: any[] = [];
   displayedColumns: string[] = ['Id', 'Name', 'Email', 'Mobile','EmployeeActivateDate', 'EmployeeDOB', 'TaskId', 'TaskStartDate','TaskEndDate','icon'];
   dataSourceList!: MatTableDataSource<any[]>;
-
+  loggedIn = false; // Initially, the user is not logged in
+  loggedInUser: any; // To store user details when logged in
 
   constructor( private authService: AuthService,
    private http: HttpClient,
@@ -51,6 +52,12 @@ export class UserspageComponent {
 
   ngOnInit() {
     this.candidate_details();
+    // fetching the username from the local storage and store in getUsername
+    const getUsername = localStorage.getItem('session');
+    if (getUsername) {
+      this.loggedIn = true;
+      this.loggedInUser = JSON.parse(getUsername);
+    }
   }
 
 
