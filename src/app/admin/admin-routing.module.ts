@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
-import { UserspageComponent } from './userspage/userspage.component';
 import { MaterialModule } from '../material-service/material.module';
+import { UserspageComponent } from './Employee-Dashboard/users-data.component';
 
 const routes: Routes = [
   {path: "", component: AdminComponent, children: [
-    { path: '', component: UserspageComponent }],
+    { path: '', component:UserspageComponent }],
   },
 ];
 

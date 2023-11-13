@@ -1,10 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { AuthService } from 'src/app/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { CreateEmployeeComponent } from '../create-employee/create-employee.component';
 import { MatDialog } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
-import { ToastService } from 'src/app/toast.service';
+import { ToastService } from 'src/app/services/toast.service';
 import { EmployeeDataService } from 'src/app/services/employee-data.service';
 import { MatInput } from '@angular/material/input';
 
@@ -23,10 +23,12 @@ export interface PeriodicElement {
 
 @Component({
   selector: 'app-userspage',
-  templateUrl: './userspage.component.html',
-  styleUrls: ['./userspage.component.css']
+  templateUrl: './users-data.html',
+  styleUrls: ['./users-data.component.css']
 })
 export class UserspageComponent {
+
+  value = '';
 
   @ViewChild('input') filterInput!: MatInput;
   // details:any[]=[];
