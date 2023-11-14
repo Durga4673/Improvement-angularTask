@@ -41,9 +41,6 @@ export class CreateEmployeeComponent implements OnInit {
     });
   }
 
-  // ngOnInit(): void {
-  //   this.employees = JSON.parse(localStorage.getItem('canidateDetails') || '{}');
-  // }
 
   // In this code, if there is data in 'canidateDetails' in localStorage, it will be parsed as an array, and if there is no data, this.employees will be initialized as an empty array.
 
