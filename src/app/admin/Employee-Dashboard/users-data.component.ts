@@ -8,19 +8,6 @@ import { ToastService } from 'src/app/services/toast.service';
 import { EmployeeDataService } from 'src/app/services/employee-data.service';
 import { MatInput } from '@angular/material/input';
 
-
-export interface PeriodicElement {
-  ID: number;
-  NAME: string;
-  EMAIL: string;
-  MOBILE: string;
-  EmployeeActivateDate: Date;
-  EmployeeDOB: Date;
-  TaskId: number;
-  TaskStartDate: Date;
-  TaskEndDate: Date;
-}
-
 @Component({
   selector: 'app-userspage',
   templateUrl: './users-data.html',

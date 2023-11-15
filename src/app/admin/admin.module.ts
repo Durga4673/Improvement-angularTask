@@ -6,19 +6,21 @@ import { AdminComponent } from './admin.component';
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserspageComponent } from './Employee-Dashboard/users-data.component';
+import { ErrorMessagesComponent } from "../error-messages/error-messages.component";
 
 
 @NgModule({
-  declarations: [
-    AdminComponent,
-    CreateEmployeeComponent,
-    UserspageComponent
-  ],
-  imports: [
-    CommonModule,
-    AdminRoutingModule,
-    FormsModule,
-    ReactiveFormsModule
-  ]
+    declarations: [
+        AdminComponent,
+        CreateEmployeeComponent,
+        UserspageComponent
+    ],
+    imports: [
+        CommonModule,
+        AdminRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        ErrorMessagesComponent
+    ]
 })
 export class AdminModule { }

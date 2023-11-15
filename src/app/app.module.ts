@@ -11,6 +11,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { CommonModule } from '@angular/common';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -23,8 +27,12 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
+    CommonModule,
     HttpClientModule,
     FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    AuthModule,
     // Pass an empty object for the initial state
     StoreModule.forRoot({}, {}),
      // Restrict extension to log-only mode in production

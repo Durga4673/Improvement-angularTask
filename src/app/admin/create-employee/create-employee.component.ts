@@ -1,9 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { EmployeeDataService } from 'src/app/services/employee-data.service';
 import { ToastService } from 'src/app/services/toast.service';
+import { IEmployeeDetails } from '../employee-interface';
 @Component({
   selector: 'app-create-employee',
   templateUrl: './create-employee.component.html',
@@ -17,7 +17,7 @@ export class CreateEmployeeComponent implements OnInit {
     private _toastService: ToastService,
     private _dialogRef: MatDialogRef<CreateEmployeeComponent>,
     private _empService: EmployeeDataService,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: IEmployeeDetails
   ) {
     this.employeeForm = this.fb.group({
       Id: ['', Validators.required],
@@ -77,7 +77,7 @@ export class CreateEmployeeComponent implements OnInit {
         this.employees.push(this.employeeForm.value);
         localStorage.setItem('canidateDetails', JSON.stringify(this.employees));
         this._empService
-          .updateEmployee(this.data.id, this.employeeForm.value)
+          .updateEmployee(this.data.Id, this.employeeForm.value)
           .subscribe({
             next: (val: any) => {
               console.log('update employee')

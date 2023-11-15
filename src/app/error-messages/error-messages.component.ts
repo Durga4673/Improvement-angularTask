@@ -5,10 +5,11 @@ import { getValidatorErrorMessage } from '../validators-utils';
 
 
 @Component({
-  selector: 'app-error-messages',
+  selector: '[app-error-message',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './error-messages.component.html',
+  template: `<ng-container *ngIf="errorMessage !== null">{{errorMessage}}
+  </ng-container>`,
   styleUrls: ['./error-messages.component.css']
 })
 export class ErrorMessagesComponent {
