@@ -23,6 +23,8 @@ export class AuthService {
   ];
 
   session: any;
+isLoggedIn: any;
+  loggedInUser: any;
   constructor(private router: Router) {
 
     // this code is for when the user is loggedIn and back to landing page without logout and enter the url again it will use store the details in local storgae
@@ -43,6 +45,12 @@ export class AuthService {
     if (user) {
       this.session = user;
       localStorage.setItem('session', JSON.stringify(this.session));
+         // Redirect based on user role
+          if (user.role === 'admin') {
+            this.router.navigate(['/admin']);
+          } else if (user.role === 'public') {
+            this.router.navigate(['/public']);
+          }
     }
     return user;
   }

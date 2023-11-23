@@ -5,6 +5,8 @@ import { PublicRoutingModule } from './public-routing.module';
 import { PublicComponent } from './public.component';
 import { LandingModule } from './landing/landing.module';
 import { UsersDashboardComponent } from './users-dashboard/users-dashboard.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MaterialModule } from '../material-service/material.module';
 
 
 @NgModule({
@@ -15,7 +17,8 @@ import { UsersDashboardComponent } from './users-dashboard/users-dashboard.compo
   imports: [
     CommonModule,
     PublicRoutingModule,
-    LandingModule
+    LandingModule,
+    MaterialModule
   ]
 })
 export class PublicModule { }

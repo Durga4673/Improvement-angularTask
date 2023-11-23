@@ -69,15 +69,20 @@ export class UserspageComponent {
   }
 
   openDialog() {
-    let dialogRef = this.dialog.open(CreateEmployeeComponent, {
-      height: '58%',
-      width: '50%',
-    });
-    dialogRef.afterClosed().subscribe(()=>{
-      console.log('close event');
-      this.candidate_details();
-      // this.dataSourceList = JSON.parse(localStorage.getItem('canidateDetails')  || '{}');
-    });
+    // Allow only admin to open the dialog for creating/editing employees
+    if (this.canEditOrDelete()) {
+      let dialogRef = this.dialog.open(CreateEmployeeComponent, {
+        height: '58%',
+        width: '50%',
+      });
+      dialogRef.afterClosed().subscribe(() => {
+        console.log('close event');
+        this.candidate_details();
+      });
+    } else {
+      // Display a message or perform some other action for non-admin users
+      console.log('Permission denied');
+    }
   }
 
 
@@ -121,17 +126,23 @@ export class UserspageComponent {
   //     }
   //   }
   // }
-  deleteEmployee(id: number){
-    this._empService.deleteEmployeeList(id).subscribe({
-      next: (res) => {
-        console.log(res);
-        this._toastService.openSnackBar('employee deleted', 'done');
-        this.candidate_details();
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    })
+  deleteEmployee(id: number) {
+    // Allow only admin to delete employees
+    if (this.canEditOrDelete()) {
+      this._empService.deleteEmployeeList(id).subscribe({
+        next: (res) => {
+          console.log(res);
+          this._toastService.openSnackBar('employee deleted', 'done');
+          this.candidate_details();
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
+    } else {
+      // Display a message or perform some other action for non-admin users
+      console.log('Permission denied');
+    }
   }
 
   UpdateEmployee( data: any){
@@ -146,4 +157,11 @@ export class UserspageComponent {
     },
    });
  }
+
+
+ canEditOrDelete(): boolean {
+  // Check if the logged-in user is an admin
+  return this.authService.isLoggedIn && this.authService.loggedInUser.role === 'admin';
+}
+
 }
