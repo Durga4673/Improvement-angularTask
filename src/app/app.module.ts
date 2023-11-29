@@ -15,6 +15,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 import { AuthModule } from './auth/auth.module';
+import {  userReducer } from './store/data.reducers';
+import { EffectsRootModule } from '@ngrx/effects';
+import { EffectsModule } from '@ngrx/effects';
+import { DataEffects } from './store/data.effects';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,10 @@ import { AuthModule } from './auth/auth.module';
     MatInputModule,
     AuthModule,
     // Pass an empty object for the initial state
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({
+      data : userReducer
+    }),
+    EffectsModule.forRoot([DataEffects]),
      // Restrict extension to log-only mode in production
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],

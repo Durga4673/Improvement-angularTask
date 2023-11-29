@@ -23,7 +23,7 @@ export class AuthService {
   ];
 
   session: any;
-isLoggedIn: any;
+  isLoggedIn: any;
   loggedInUser: any;
   constructor(private router: Router) {
 

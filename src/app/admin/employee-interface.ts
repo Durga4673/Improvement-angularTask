@@ -1,5 +1,5 @@
 export interface IEmployeeDetails {
-  Id: number;
+  id: number;
   NAME: string;
   EMAIL: string;
   MOBILE: string;

@@ -77,7 +77,7 @@ export class CreateEmployeeComponent implements OnInit {
         this.employees.push(this.employeeForm.value);
         localStorage.setItem('canidateDetails', JSON.stringify(this.employees));
         this._empService
-          .updateEmployee(this.data.Id, this.employeeForm.value)
+          .updateEmployee(this.data.id, this.employeeForm.value)
           .subscribe({
             next: (val: any) => {
               console.log('update employee')

@@ -7,6 +7,10 @@ import { HttpClient } from '@angular/common/http';
 import { ToastService } from 'src/app/services/toast.service';
 import { EmployeeDataService } from 'src/app/services/employee-data.service';
 import { MatInput } from '@angular/material/input';
+import { Store } from '@ngrx/store';
+import { Observable, from } from 'rxjs';
+import { selectData, selectLoading, selectError } from 'src/app/store/data.selectors';
+import * as DataActions from '../../store/data.actions';
 
 @Component({
   selector: 'app-userspage',
@@ -26,11 +30,21 @@ export class UserspageComponent {
   loggedIn = false; // Initially, the user is not logged in
   loggedInUser: any; // To store user details when logged in
 
+  data$ : Observable<any[]>;
+  loading$: Observable<boolean>;
+  error$: Observable<any>;
+
   constructor( private authService: AuthService,
    private http: HttpClient,
    public dialog: MatDialog,
    private _empService: EmployeeDataService,
-   private _toastService: ToastService){ }
+   private _toastService: ToastService,
+   private store : Store<{ data: string}>
+   ){
+    this.data$ = this.store.select(selectData);
+    this.loading$ = this.store.select(selectLoading);
+    this.error$ = this.store.select(selectError);
+   }
 
 
   logout(){
@@ -40,6 +54,8 @@ export class UserspageComponent {
   }
 
   ngOnInit() {
+
+    this.loadData();
     this.candidate_details();
     // fetching the username from the local storage and store in getUsername
     const getUsername = localStorage.getItem('session');
@@ -69,20 +85,15 @@ export class UserspageComponent {
   }
 
   openDialog() {
-    // Allow only admin to open the dialog for creating/editing employees
-    if (this.canEditOrDelete()) {
-      let dialogRef = this.dialog.open(CreateEmployeeComponent, {
-        height: '58%',
-        width: '50%',
-      });
-      dialogRef.afterClosed().subscribe(() => {
-        console.log('close event');
-        this.candidate_details();
-      });
-    } else {
-      // Display a message or perform some other action for non-admin users
-      console.log('Permission denied');
-    }
+    let dialogRef = this.dialog.open(CreateEmployeeComponent, {
+      height: '58%',
+      width: '50%',
+    });
+    dialogRef.afterClosed().subscribe(()=>{
+      console.log('close event');
+      this.candidate_details();
+      // this.dataSourceList = JSON.parse(localStorage.getItem('canidateDetails')  || '{}');
+    });
   }
 
 
@@ -126,23 +137,17 @@ export class UserspageComponent {
   //     }
   //   }
   // }
-  deleteEmployee(id: number) {
-    // Allow only admin to delete employees
-    if (this.canEditOrDelete()) {
-      this._empService.deleteEmployeeList(id).subscribe({
-        next: (res) => {
-          console.log(res);
-          this._toastService.openSnackBar('employee deleted', 'done');
-          this.candidate_details();
-        },
-        error: (err) => {
-          console.log(err);
-        }
-      });
-    } else {
-      // Display a message or perform some other action for non-admin users
-      console.log('Permission denied');
-    }
+  deleteEmployee(id: number){
+    this._empService.deleteEmployeeList(id).subscribe({
+      next: (res) => {
+        console.log(res);
+        this._toastService.openSnackBar('employee deleted', 'done');
+        this.candidate_details();
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
   }
 
   UpdateEmployee( data: any){
@@ -161,7 +166,11 @@ export class UserspageComponent {
 
  canEditOrDelete(): boolean {
   // Check if the logged-in user is an admin
-  return this.authService.isLoggedIn && this.authService.loggedInUser.role === 'admin';
+  return this.authService.isLoggedIn && this.authService.loggedInUser.role == 'admin';
+}
+
+loadData() {
+  this.store.dispatch(DataActions.loadData());
 }
 
 }
